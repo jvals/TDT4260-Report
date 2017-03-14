@@ -3,3 +3,37 @@
 % Knowledge that is necessary to understand the proposed solution
 % Who is the intened audience and what do they need to know for the
 % work to be understood.
+
+Moore's law states that the number of transistors on a CPU will double
+every two years~\cite{moore}. Ideally, this would give us twice the
+computation power on a system every 24 months. However, because of
+limitations such as memory performance, this does not happen.
+
+To better utilize the available processing power, we need to avoid CPU
+stalling for memory operations. Stalls can occur because loading data
+from main memory takes many cycles. We can avoid some of this waiting
+by keeping often-used data in a special memory which is smaller and
+faster than main memory, and closer to the processor. This memory is
+called Cache memory.
+
+Because we can't keep all the data of main memory in cache, we
+inevitably get what is called cache misses. A cache miss means we did
+not find what we were looking for in cache, and we need to look for
+this data in main memory. Again, this can waste hundreds of
+cycles. Therefore, we want to minimize the number of cache misses.
+
+Prefetching is one way to decrease the number of cache misses. If we
+are able to load relevant data into cache before it is needed, we
+avoid CPU stalls. However, knowing what to prefetch is not easy. The
+definition of a good prefetch is that the prefetched data is used by
+the processor before it is
+replaced~\cite{srinivasan_davidson_tyson_2004}. This means that
+prefetched data which goes unused is bad, because this data requires
+valuable bandwidth. Additionally, bad prefetches might evict addresses
+from cache which could have been used by the processor in the near
+future.
+
+The strategy this paper explores is ``Reference Prediction Tables'', as
+described in~\cite{chen_baer_1995}.
+
+\subsection{Reference Prediction Tables}
