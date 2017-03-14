@@ -13,6 +13,11 @@ request data faster than what primary memory can provide. In a Von
 Neumann architecture\todo{find article to cite here}, the processor
 will stall as it waits for the next data or instruction to arrive.
 
+\begin{center}
+  \includegraphics[width=0.5\textwidth]{graphs/memorywall}
+  \captionof{figure}{The Memory Wall}
+\end{center}
+
 There are several techniques used in modern systems which mitigates
 this bottleneck, like caching, outsourcing memory management to a DMA,
 branch predictions, etc. One interesting approach is named
@@ -35,9 +40,5 @@ patterns, and try to exploit them.
 Our approach does this by using a reference prediction table.
 In this paper we analyse the result of a basic implmentation of RPT,
 and we show how to improve RPT using a lookahead technique.
-
-% \begin{center}
-% \includegraphics[width=0.5\textwidth]{graphs/memorywall}
-% \end{center}
 
 % http://ieeexplore.ieee.org/abstract/document/5389383/
