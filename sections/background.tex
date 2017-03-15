@@ -57,3 +57,26 @@ Figure~\ref{table:entry}.
   \label{table:entry}
 \end{table}
 
+% State machine
+\begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}[node distance=3cm,on grid,auto]
+   \node[state] (q_0)   {init};
+   \node[state] (q_1) [right=of q_0] {steady};
+   \node[state] (q_2) [below=of q_0] {transient};
+   \node[state] (q_3) [right=of q_2] {no-pred};
+    \path[->]
+    (q_0) edge  [out=5, in=175] node {correct} (q_1)
+          edge  node [swap, text width=2.3cm] {\hspace{0.4cm}incorrect
+            (update stride)} (q_2)
+    (q_1) edge [out=185, in=355, looseness=1] node {incorrect} (q_0)
+          edge [loop right] node {correct} ()
+    (q_2) edge  [out=355, in=185] node [swap, text width=2.3cm] {\hspace{0.4cm}incorrect (update stride)} (q_3)
+          edge  node [swap] {correct} (q_1)
+    (q_3) edge [out=175, in=5] node [swap] {correct} (q_2)
+          edge  [loop right] node [text width=2.3cm] {\hspace{0.4cm}incorrect (update stride)} ();
+\end{tikzpicture}
+\caption{State machine as proposed in~\cite{chen_baer_1995}}
+\label{figure:statemachine}
+\end{center}
+\end{figure}
