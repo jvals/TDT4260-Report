@@ -37,3 +37,23 @@ The strategy this paper explores is ``Reference Prediction Tables'', as
 described in~\cite{chen_baer_1995}.
 
 \subsection{Reference Prediction Tables}
+In RPT, we keep a table with entries corresponding to load
+instructions. Every time the program counter hits a load, the current
+address (tag), as well as the memory location we load from
+(prev\_addr), is stored as an entry in this table. When we encounter a
+tag which already resides in the table, we check what address we are
+about to load from this time, and from that subtract the previous
+address. The result of this subtraction is stored in the corresponding
+entry as the ``stride''. The format of an entry is shown in Figure
+\ref{table:entry}.
+
+\begin{table}
+  \centering
+  \begin{tabular}{ | c | c | c | c |}
+    \hline
+    Tag & Previous Address & Stride & State \\ \hline
+  \end{tabular}
+  \caption{RPT Entry}
+  \label{table:entry}
+\end{table}
+
