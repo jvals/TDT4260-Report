@@ -40,7 +40,7 @@ described in~\cite{chen_baer_1995}.
 In RPT, we keep a table with entries corresponding to load
 instructions. Every time the program counter hits a load, the current
 address (tag), as well as the memory location we load from
-(prev\_addr), is stored as an entry in this table. When we encounter a
+(previous address), is stored as an entry in this table. When we encounter a
 tag which already resides in the table, we check what address we are
 about to load from this time, and from that subtract the previous
 address. The result of this subtraction is stored in the corresponding
