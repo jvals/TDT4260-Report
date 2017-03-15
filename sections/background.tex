@@ -57,6 +57,21 @@ Figure~\ref{table:entry}.
   \label{table:entry}
 \end{table}
 
+If two consecutive strides are equal, this indicates an access pattern
+we can make use of. A prefetch is issued if the block is not in
+cache.
+
+To avoid bad prefetches, we use a state machine which indicates the
+current status of the system. Initially, an entry has state
+``init''. Every time we encounter an entry which already resides in
+the table, we check if the stride is equal to the one we have stored
+in the entry. That is, we check if current\_address$ -
+$previous\_address = stride. Depending if this is true (correct) or
+not (incorrect), we move to a new state. The state machine is shown in
+Figure~\ref{figure:statemachine}. If the entry has state init,
+transient or steady, we can consider issuing a prefetch.
+
+
 % State machine
 \begin{figure}[h]
 \begin{center}
