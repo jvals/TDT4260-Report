@@ -9,31 +9,30 @@ every two years~\cite{moore}. Ideally, this would give us twice the
 computation power on a system every 24 months. However, because of
 limitations such as memory performance, this does not happen.
 
-To better utilize the available processing power, we need to avoid CPU
-stalling for memory operations. Stalls can occur because loading data
-from main memory takes many cycles. We can avoid some of this waiting
-by keeping often-used data in a special memory which is smaller and
-faster than main memory, and closer to the processor. This memory is
-called Cache memory.
+To better utilize the available processing power, CPU stalling for
+memory operations needs to be avoided. Stalls occur because loading
+data from main memory takes several cycles. We can avoid some of this
+waiting by keeping often-used data in a special memory which is
+smaller and faster than main memory, and closer to the processor. This
+memory is called Cache memory.
 
-Because we can't keep all the data of main memory in cache, we
-inevitably get what is called cache misses. A cache miss means we did
-not find what we were looking for in cache, and we need to look for
-this data in main memory. Again, this can waste hundreds of
-cycles. Therefore, we want to minimize the number of cache misses.
+Because we can't keep all main memory data in cache, we inevitably get
+what is called cache misses. A cache miss happens when the requested
+data is not found in cache, requiring the program to fetch the data
+from main memory. This can waste hundreds of cycles. Therefore, the
+number of cache misses should be minimized.
 
-Prefetching is one way to decrease the number of cache misses. If we
-are able to load relevant data into cache before it is needed, we
-avoid CPU stalls. However, knowing what to prefetch is not easy. The
+Prefetching is one way to decrease the number of cache misses. By
+loading relevant data into cache before it is needed, CPU stalls can
+be avoided. However, knowing what to prefetch is not easy. The
 definition of a good prefetch is that the prefetched data is used by
 the processor before it is
 replaced~\cite{srinivasan_davidson_tyson_2004}. This means that
 prefetched data which goes unused is bad, because this data requires
-valuable bandwidth. Additionally, bad prefetches might evict addresses
-from cache which could have been used by the processor in the near
-future.
+valuable bandwidth. Additionally, bad prefetches might evict data from
+cache which could have been used by the processor in the near future.
 
-The strategy this paper explores is ``Reference Prediction Tables'', as
+This paper explores ``Reference Prediction Tables'', as
 described in~\cite{chen_baer_1995}.
 
 \subsection{Reference Prediction Tables}\todo{Move to Proposed
@@ -41,12 +40,12 @@ described in~\cite{chen_baer_1995}.
 
 In RPT, we keep a table with entries corresponding to load
 instructions. Every time the program counter hits a load, the current
-address (tag), as well as the memory location we load from
-(previous address), is stored as an entry in this table. When we encounter a
-tag which already resides in the table, we check what address we are
-about to load from this time, and from that subtract the previous
-address. The result of this subtraction is stored in the corresponding
-entry as the ``stride''. The complete format of an entry is shown in
+address (tag), as well as the memory location we load from (previous
+address), is stored as an entry in this table. When we encounter a tag
+which already resides in the table, we check what address we are about
+to load from, and from that, subtract the previous address. The result
+of this subtraction is stored in the corresponding entry as the
+``stride''. The complete format of an entry is shown in
 Figure~\ref{table:entry}.
 
 \begin{table}
@@ -60,15 +59,14 @@ Figure~\ref{table:entry}.
 \end{table}
 
 If two consecutive strides are equal, this indicates an access pattern
-we can make use of. A prefetch is issued if the block is not in
-cache.
+we can make use of. A prefetch is issued if the block is not in cache.
 
 To avoid bad prefetches, we use a state machine which indicates the
 current status of the system. Initially, an entry has state
 ``init''. Every time we encounter an entry which already resides in
 the table, we check if the stride is equal to the one we have stored
 in the entry. That is, we check if current\_address$ -
-$previous\_address = stride. Depending if this is true (correct) or
+$previous\_address = stride. Depending on if this is true (correct) or
 not (incorrect), we move to a new state. The state machine is shown in
 Figure~\ref{figure:statemachine}. If the entry has state init,
 transient or steady, we can consider issuing a prefetch.
