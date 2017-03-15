@@ -19,17 +19,16 @@ will stall as it waits for the next data or instruction to arrive.
 \end{center}
 
 There are several techniques used in modern systems which mitigates
-this bottleneck, like caching, outsourcing memory management to a DMA,
-branch predictions, etc. One interesting approach is named
-``prefetching''.
+this bottleneck, like caching or outsourcing memory management to a
+DMA. One interesting approach is named ``prefetching''.
 
-Prefetching involves speculating in which memory
-addresses are needed in the near future, and fetching them prior to
-execution. This paper investigates the ``speculating'' part, that is,
-what addresses should we fetch and when. When the prefetching is
-successful, we avoid CPU stalling as the processor has the needed data
-available and we get increased performance. When we are unsuccessful,
-we waste valuable cache space.
+Prefetching involves speculating in which memory addresses are needed
+in the near future, and fetching them prior to execution. This paper
+investigates the ``speculating'' part, that is, what addresses should
+be fetched and when. When the prefetching is successful, CPU stalling
+is avoided as the processor has the needed data available, resulting
+in increased performance. When unsuccessful, valuable cache space is
+wasted.
 
 The most basic kind of prefetching would be to load the memory
 addresses which sequentially follow the address we are currently
@@ -37,8 +36,8 @@ working on. However, this tends to be not so effective as memory
 access tend to be non-sequential. Instead, we can look for access
 patterns, and try to exploit them.
 
-Our approach does this by using a reference prediction table.
-In this paper we analyse the result of a basic implmentation of RPT,
-and we show how to improve RPT using a lookahead technique.
+Our approach does this by using a reference prediction table.  In this
+paper we analyse the result of a basic implementation of RPT, and show
+how to improve RPT using a lookahead technique.
 
 % http://ieeexplore.ieee.org/abstract/document/5389383/
