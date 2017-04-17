@@ -8,12 +8,12 @@
 
 \subsection{Reference Prediction Tables}
 
-In RPT, we keep a table with entries corresponding to load
+RPT makes use of a table with entries corresponding to load
 instructions. Every time the program counter hits a load, the current
-address (tag), as well as the memory location we load from (previous
-address), is stored as an entry in this table. When we encounter a tag
-which already resides in the table, we check what address we are about
-to load from, and from that, subtract the previous address. The result
+address (tag), as well as the memory location loaded from the previous
+address, is stored as an entry in this table. When a tag which already
+resides in the table is found, the program checks what address is about
+to be loaded, and from that, subtract the previous address. The result
 of this subtraction is stored in the corresponding entry as the
 ``stride''. The complete format of an entry is shown in
 Table~\ref{table:entry}.
@@ -28,18 +28,19 @@ Table~\ref{table:entry}.
   \label{table:entry}
 \end{table}
 
-If two consecutive strides are equal, this indicates an access pattern
-we can make use of. A prefetch is issued if the block is not in cache.
+If two consecutive strides are equal, this indicates a useful access
+pattern. A prefetch is issued if the block is not in cache.
 
-To avoid bad prefetches, we use a state machine which indicates the
-current status of the system. Initially, an entry has state
-``init''. Every time we encounter an entry which already resides in
-the table, we check if the stride is equal to the one we have stored
-in the entry. That is, we check if current\_address$ -
-$previous\_address = stride. Depending on if this is true (correct) or
-not (incorrect), we move to a new state. The state machine is shown in
-Figure~\ref{figure:statemachine}. If the entry has state init,
-transient or steady, we can consider issuing a prefetch.
+To avoid bad prefetches, a state machine which indicates the current
+status of the system is used. Initially, an entry has state
+``init''. Every time an entry which already resides in the table is
+encountered, a check is done to see if the stride is equal to the one
+stored in the entry. That is, if current\_address$ -
+$previous\_address = stride. If this is true (correct), a transition
+to a new state occurs. Otherwise (incorrect), there is no
+transition. The state machine is shown in
+Figure~\ref{figure:statemachine}. If the entry's state is init,
+transient or steady, a prefetch is considered.
 
 \begin{table}
   \centering
@@ -54,12 +55,12 @@ transient or steady, we can consider issuing a prefetch.
 An improvement on this design is to issue multiple prefetches at the
 same time. This is done to prevent data arriving too late, or being
 replaced too early. A variable \texttt{times} is introduced (shown in
-Table~\ref{table:entry_la}) and initially is set to 1. Each time we get a table hit, we
-increment \texttt{times} (up to a fixed lookahead limit) if the
-correct-condition is true. If not, we decrement (down to a limit of
-1). Instead of issuing a single prefetch, we now issue a batch of
-prefetches with address = previous\_address$ + $stride$\times$i,
-where i $= [1, 2, \ldots, \texttt{times}]$.
+Table~\ref{table:entry_la}) and initially set to 1. Each time there is
+a table hit, \texttt{times} is incremented (up to a fixed lookahead
+limit) if the correct-condition is true. If not, it is decremented
+(down to a limit of 1). Instead of issuing a single prefetch, a batch
+of prefetches with address = previous\_address$ + $stride$\times$i,
+where i $= [1, 2, \ldots, \texttt{times}]$ are issued.
 
 % State machine
 \begin{figure}[h]
