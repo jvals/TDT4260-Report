@@ -10,7 +10,7 @@ In computer architecture, the ``memory wall''~\cite{wulf_mckee_1995}
 is a well known problem. Slow memory act as a bottleneck in a system
 with fast processors. The reason for this is that processors will
 request data faster than what primary memory can provide. In a Von
-Neumann architecture\todo{find article to cite here}, the processor
+Neumann architecture~\cite{von1992first}, the processor
 will stall as it waits for the next data or instruction to arrive.
 
 \begin{center}
@@ -36,8 +36,11 @@ working on. However, this tends to be not so effective as memory
 access tend to be non-sequential. Instead, we can look for access
 patterns, and try to exploit them.
 
-Our approach does this by using a reference prediction table.  In this
-paper we analyze the result of a basic implementation of RPT, and show
-how to improve RPT using a lookahead technique.
+In this paper we start by exploring the sequential prefetcher. A
+Stride Directed Prediction prefetcher, a slight improvement to the
+previous. Later
+we implement both a Global Histor Buffer and Reference Prediction
+Table prefetcher with a speedup compared to baseline of 3\%. 
+
 
 % http://ieeexplore.ieee.org/abstract/document/5389383/

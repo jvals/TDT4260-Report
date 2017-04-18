@@ -6,6 +6,35 @@
 % Enough information for the solution to be implementable
 % Use illustrations when possible to convey the message
 
+\subsection{Sequential prefetcher}
+To be conclusive, an implementation of the simlpest for of prefetcher
+was done. Whenever a miss occures the prefetcher fecthes the object
+that is next in memory. We tried a couple of different settings for
+prefecth distance and prefetch degree.
+
+\subsection{Stride Directed Prediction}
+A slight impprovement from a sequential prefetcher is the
+\textit{Stride Directed prefetcher, (SDP)}~\cite{sdp}.
+To avoid cache pollution in programs that have non-sequential memory
+accessing SDP was introduced. It utilises a simple table to more
+predict how big the next stride is going to be. The first time a load
+instruction is encountered \textit{Program Counter (PC)} and the
+accessed address is stored in a table entry as in
+Table~\ref{table:sdpentry}. On the next access \textit{Last Adress}
+and current address is compared. The difference, ``Stride'', is added
+to the current address and to which a prefetch is issued.  
+
+\begin{table}
+  \centering
+  \begin{tabular}{ | c | c | c |}
+    \hline
+    PC & Last Adress & Valid Bit \\ \hline
+  \end{tabular}
+  \caption{SDP entry}
+  \label{table:sdpentry}
+\end{table}
+
+
 \subsection{Reference Prediction Tables}
 
 RPT makes use of a table with entries corresponding to load
