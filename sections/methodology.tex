@@ -6,5 +6,17 @@
 % Baseline and other state-of-the-art solutions
 
 \subsection{The Simulator}
+
 All simulations have been executed on the M5 simulator, running on a
-virtual machine provided by IDI~\cite{idi}.
+virtual machine provided by IDI~\cite{idi}.  The M5 baseline
+configuration has a two-level cache. L1 is split into a 32 KiB
+instruction cache and a 64 KiB data cache. L2 is a combined 1 MiB
+cache. All prefetching is done for the L2 cache. Each cache line has a
+size of 64 B. The bus connecting cache to memory is 64 bits wide and
+has a latency of 30 ns. The frequency of the bus is 400 MHz.
+
+The M5 simulates Alpha 21264 which is a four-issue superscalar
+architecture with out-of-order execution. Alpha is able to have up to
+80 instructions in partial states of completion at any
+time~\cite{kessler_1999}.
+
