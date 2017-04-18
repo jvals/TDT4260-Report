@@ -16,13 +16,13 @@ prefecth distance and prefetch degree.
 A slight impprovement from a sequential prefetcher is the
 \textit{Stride Directed prefetcher, (SDP)}~\cite{sdp}.
 To avoid cache pollution in programs that have non-sequential memory
-accessing SDP was introduced. It utilises a simple table to more
+accessing SDP was introduced. It utilises a simple table to
 predict how big the next stride is going to be. The first time a load
 instruction is encountered \textit{Program Counter (PC)} and the
 accessed address is stored in a table entry as in
 Table~\ref{table:sdpentry}. On the next access \textit{Last Adress}
 and current address is compared. The difference, ``Stride'', is added
-to the current address and to which a prefetch is issued.  
+to the current address and to which a prefetch is issued.
 
 \begin{table}
   \centering
