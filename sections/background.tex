@@ -4,35 +4,38 @@
 % Who is the intened audience and what do they need to know for the
 % work to be understood.
 
-Moore's law states that the number of transistors on a CPU will double
-every two years~\cite{moore}. Ideally, this would give us twice the
-computation power on a system every 24 months. However, because of
-limitations such as memory performance, this does not happen.
+% Moore's law states that the number of transistors on a CPU will double
+% every two years~\cite{moore}. Ideally, this would give us twice the
+% computation power on a system every 24 months. However, because of
+% limitations such as memory performance, this does not happen.
 
-To better utilize the available processing power, CPU stalling for
-memory operations needs to be avoided. Stalls occur because loading
-data from main memory takes several cycles. We can avoid some of this
-waiting by keeping often-used data in a special memory which is
-smaller and faster than main memory, and closer to the processor. This
-memory is called Cache memory.
-
-Because we can't keep all main memory data in cache, we inevitably get
-what is called cache misses. A cache miss happens when the requested
-data is not found in cache, requiring the program to fetch the data
-from main memory. This can waste hundreds of cycles. Therefore, the
-number of cache misses should be minimized.
-
-Prefetching is one way to decrease the number of cache misses. By
-loading relevant data into cache before it is needed, CPU stalls can
-be avoided. However, knowing what to prefetch is not easy. The
-definition of a good prefetch is that the prefetched data is used by
-the processor before it is
+Prefetching can decrease the number of cache misses. By loading
+relevant data into cache before it is needed, CPU stalls can be
+avoided. However, knowing what to prefetch is not easy. The definition
+of a good prefetch is that the prefetched data is used by the
+processor before it is
 replaced~\cite{srinivasan_davidson_tyson_2004}. This means that
 prefetched data which goes unused is bad, because this data requires
 valuable bandwidth. Additionally, bad prefetches might evict data from
 cache which could have been used by the processor in the near future.
 
-This paper explores ``Reference Prediction Tables'' and ``Global
-History Buffers'', as described in~\cite{chen_baer_1995}
-and~\cite{nesbit_smith_2005}.
+\subsection{Sequential Prefetching}
 
+As mentioned, the easiest prefetching scheme is to fetch the next
+block in addition to the block the processor needs. This works well in
+programs with linear flow, but it's often not enough to fetch a single
+block. Increasing the prefetch degree, the number of blocks to
+prefetch, can improve performance. However, if too many blocks are
+fetched, the cache might evict useful blocks, which would lower the
+performance.
+
+\subsection{Strided Prefetching}
+
+A stride directed prefetcher is an example of an instruction-based
+prefetcher. SDP keeps a table of entries indexed by the current load
+address. The first time a load is found, the address is stored in a
+new entry, together with the address of the data. If the load address
+is encountered again, the difference between the current data address
+and the previous data address is calculated. The result, called the
+``stride'', is added to the current data address and the resulting address
+is finally prefetched.
