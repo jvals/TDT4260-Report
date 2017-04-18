@@ -114,7 +114,7 @@ implementation is quite different.
 \begin{tikzpicture}
 \begin{axis}[
     symbolic x
-    coords={twolf,bzip2\_source,swim,bzip2\_graphic,bzip2\_program,applu,apsi,art110,art470,galgel,wupwise,ammp},
+    coords={twolf,bzip2\_source,swim,bzip2\_graphic,bzip2\_program,applu,apsi,art110,art470,galgel,wupwise,ammp,blank},
     xtick=data,
     ybar interval=0.7,
     x tick label style = {rotate=45,anchor=east},
@@ -133,6 +133,7 @@ implementation is quite different.
     (galgel,1.00)
     (wupwise,1.00)
     (ammp,1.00)
+    (blank,1)
 };
     \addplot[fill=black] coordinates {
     (twolf,0.99)
@@ -147,6 +148,7 @@ implementation is quite different.
     (galgel,1.09)
     (wupwise,1.25)
     (ammp,1.63)
+    (blank,1)
 };
     \addplot[black, fill=yellow] coordinates {
     (twolf,0.99)
@@ -161,6 +163,7 @@ implementation is quite different.
     (galgel,1.11)
     (wupwise,1.25)
     (ammp,1.66)
+    (blank,1)
 };
 \legend{SDP,GHB,RTP}
 \end{axis}
