@@ -20,3 +20,26 @@ architecture with out-of-order execution. Alpha is able to have up to
 80 instructions in partial states of completion at any
 time~\cite{kessler_1999}.
 
+\subsection{SPEC CPU2000}
+
+In order to test the performance of the implementation, a subset of the SPEC
+CPU2000 benchmarks was used~\cite{spec2000}. This includes:
+\begin{multicols}{2}
+\begin{itemize}
+\item twolf
+\item bzip2\_source
+\item swim
+\item bzip2\_graphic
+\item bzip2\_program
+\item applu
+\item apsi
+\item art110
+\item art470
+\item galgel
+\item wupwise
+\item ammp
+\end{itemize}
+\end{multicols}
+
+These benchmarks all have different memory access patterns, which is
+helpful for discovering weaknesses in the solution.
