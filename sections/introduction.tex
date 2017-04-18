@@ -49,14 +49,13 @@ working on. However, this tends to be not so effective as memory
 access tend to be non-sequential. Instead, we can look for access
 patterns, and try to exploit them.
 
-In this paper we start by exploring the sequential prefetcher. A
-Stride Directed Prediction prefetcher, a slight improvement to the
-previous is also implemented and tested. Later, two prefetchers which we have implemented are shown
-and tested. The first is based on Chen and Baer's reference
-prediction tables~\cite{chen_baer_1995} (with and without
-lookahead). The third is based on Nesbit and Smith's Global History
-Buffer with delta correlating~\cite{nesbit_smith_2005}. All
-prefetchers have been benchmarked with SPEC CPU2000 in the M5
-simulator.
+In this paper, five prefetchers which we have implemented are
+explained and tested. The first one is a simple sequential
+prefetcher. The second is a stride directed prefetcher. The third and
+fourth are based on Chen and Baer's reference prediction
+table~\cite{chen_baer_1995} (with and without lookahead). The fifth is
+based on Nesbit and Smith's Global History Buffer with delta
+correlating~\cite{nesbit_smith_2005}. All prefetchers have been
+benchmarked with SPEC CPU2000 in the M5 simulator.
 
 % http://ieeexplore.ieee.org/abstract/document/5389383/
