@@ -29,6 +29,7 @@ to the current address and to which a prefetch is issued.
   \begin{tabular}{ | c | c | c |}
     \hline
     PC & Last Adress & Valid Bit \\ \hline
+    64 bit & 64 bit & 1 bit \\ \hline
   \end{tabular}
   \caption{SDP entry}
   \label{table:sdpentry}
@@ -52,6 +53,7 @@ Table~\ref{table:entry}.
   \begin{tabular}{ | c | c | c | c |}
     \hline
     Tag & Previous Address & Stride & State \\ \hline
+    64 bit & 64 bit & 32 bit & 32 bit \\ \hline
   \end{tabular}
   \caption{RPT Entry}
   \label{table:entry}
@@ -86,6 +88,7 @@ where i $= [1, 2, \ldots, \texttt{times}]$ are issued.
   \begin{tabular}{ | c | c | c | c | c |}
     \hline
     Tag & Previous Address & Stride & State & Times \\ \hline
+    64 bit & 64 bit & 32 bit & 32 bit & 8 bit \\ \hline
   \end{tabular}
   \caption{RPT Entry with lookahead}
   \label{table:entry_la}
