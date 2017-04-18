@@ -24,7 +24,11 @@ Table~\ref{table:sdpentry}. On the next access \textit{Last Adress}
 and current address is compared. The difference, ``Stride'', is added
 to the current address and to which a prefetch is issued.
 
-\begin{table}
+The total size of an SDP entry is 24 byte, 192 bits, even though the
+fields sum up to 129 bits. This is due to padding added to satisfy
+alignment constraints.
+
+\begin{table}[h]
   \centering
   \begin{tabular}{ | c | c | c |}
     \hline
