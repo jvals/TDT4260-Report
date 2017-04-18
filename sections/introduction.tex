@@ -36,8 +36,11 @@ working on. However, this tends to be not so effective as memory
 access tend to be non-sequential. Instead, we can look for access
 patterns, and try to exploit them.
 
-Our approach does this by using a reference prediction table.  In this
-paper we analyze the result of a basic implementation of RPT, and show
-how to improve RPT using a lookahead technique.
+In this paper, three prefetchers which we have implemented are shown
+and tested. The first two are based on Chen and Baer's reference
+prediction tables~\cite{chen_baer_1995} (with and without
+lookahead). The third is based on Nesbit and Smith's Global History
+Buffer~\cite{nesbit_smith_2005}. All prefetchers have been benchmarked
+with SPEC CPU2000 in the M5 simulator.
 
 % http://ieeexplore.ieee.org/abstract/document/5389383/
