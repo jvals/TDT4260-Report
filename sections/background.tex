@@ -21,4 +21,21 @@ cache which could have been used by the processor in the near future.
 
 \subsection{Sequential Prefetching}
 
+As mentioned, the easiest prefetching scheme is to fetch the next
+block in addition to the block the processor needs. This works well in
+programs with linear flow, but it's often not enough to fetch a single
+block. Increasing the prefetch degree, the number of blocks to
+prefetch, can improve performance. However, if too many blocks are
+fetched, the cache might evict useful blocks, which would lower the
+performance.
+
 \subsection{Strided Prefetching}
+
+A stride directed prefetcher is an example of an instruction-based
+prefetcher. SDP keeps a table of entries indexed by the current load
+address. The first time a load is found, the address is stored in a
+new entry, together with the address of the data. If the load address
+is encountered again, the difference between the current data address
+and the previous data address is calculated. The result, called the
+``stride'', is added to the current data address and the resulting address
+is finally prefetched.
