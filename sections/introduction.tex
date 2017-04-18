@@ -6,16 +6,18 @@
 % Highlights the main results
 % Might finish with a short explanation of the following sections
 
-In computer architecture, the ``memory wall''~\cite{wulf_mckee_1995}
-is a well known problem. Slow memory act as a bottleneck in a system
-with fast processors. The reason for this is that processors will
-request data faster than what primary memory can provide. In a Von
-Neumann architecture~\cite{von1993first}, the processor
-will stall as it waits for the next data or instruction to arrive.
+In computer architecture, the ``memory wall''~\cite{wulf_mckee_1995},
+shown in Figure~\ref{memorywall}, is a well known problem. Slow memory
+act as a bottleneck in a system with fast processors. The reason for
+this is that processors will request data faster than what primary
+memory can provide. In a Von Neumann architecture~\cite{von1993first},
+the processor will stall as it waits for the next data or instruction
+to arrive.
 
 \begin{center}
   \includegraphics[width=0.5\textwidth]{graphs/memorywall}
   \captionof{figure}{The Memory Wall}
+  \label{memorywall}
 \end{center}
 
 To better utilize the available processing power, CPU stalling for
