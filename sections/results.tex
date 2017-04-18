@@ -9,8 +9,12 @@
 %% When and why does the proposed solution work well
 %% When and why does the proposed solution work less well
 \subsection{Sequential Prefetcher}
-Testing a sequential prefetcher with a couple of different settings
-for prefetch distance and prefetch degree. Results found in Figure~\ref{graph:seq}
+The sequential prefetcher was tested with a variety of prefetch
+degrees and prefetch distances. Out of all the tests, ammp performed
+significantly worse on all configurations. As we see later on, ammp
+performes very well with RPT, which indicates that ammp has a strided
+access pattern. The results of the different variations are shown in
+Figure~\ref{graph:seq}
 \begin{figure}[h]
 \begin{tikzpicture}
 \begin{axis}[
