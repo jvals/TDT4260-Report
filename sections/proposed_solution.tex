@@ -13,16 +13,15 @@ memory.The speedup of this prefetcher varies based on the
 configuration of prefetch distance and prefetch degree.
 
 \subsection{Stride Directed Prefetcher}
-A slight improvement from a sequential prefetcher is the
-\textit{Stride Directed prefetcher, (SDP)}~\cite{sdp}.
-To avoid cache pollution in programs that have non-sequential memory
-accessing SDP was introduced. It utilizes a simple table to
-predict how big the next stride is going to be. The first time a load
-instruction is encountered \textit{Program Counter (PC)} and the
+A slight improvement from a sequential prefetcher is the Stride
+Directed Prefetcher~\cite{sdp}.  To avoid cache pollution in programs
+that access memory non-sequentially, SDP was introduced. It utilizes a
+simple table to predict the size of the next stride. The first time a
+load instruction is encountered, the Program Counter (PC) and the
 accessed address is stored in a table entry as in
-Table~\ref{table:sdpentry}. On the next access \textit{Last Address}
-and current address is compared. The difference, ``Stride'', is added
-to the current address and to which a prefetch is issued.
+Table~\ref{table:sdpentry}. On the next access, the last address and
+current address are compared. The difference (stride) is added to the
+current address, to which a prefetch is issued.
 
 The total size of an SDP entry is 24 bytes, 192 bits, even though the
 fields sum up to 129 bits. This is due to padding added to satisfy
