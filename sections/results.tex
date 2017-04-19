@@ -220,7 +220,7 @@ Figure~\ref{graph:covaccrpt}.
 \end{figure}
 
 
-\begin{figure}
+\begin{figure}[h!]
   \begin{tikzpicture}
     \begin{axis}[
     % width = \columnwidth,
@@ -257,7 +257,15 @@ Figure~\ref{graph:covaccrpt}.
   \label{graph:tablesizes}
 \end{figure}
 
-\begin{figure}
+\subsection{Size}
+As seen in Figure~\ref{graph:tablesizes} and~\ref{graph:covaccghb},
+the optimal table size for GHB and RPT-LA is $2^7=128$ entries. The
+GHB implementation uses an index table of size 90 entries. Therefore,
+the approximate memory usage of GHB is (128 entries * 16 bytes/entry)
++ (90 entries * 16 bytes/entry) = 3488 bytes. The approximate memory
+usage of RPT-LA is 128 entries * 16 bytes/entry = 2048 bytes.
+
+\begin{figure}[h!]
   \begin{tikzpicture}
     \begin{axis}[
       xlabel={Table Size [entries]},
@@ -296,11 +304,3 @@ Figure~\ref{graph:covaccrpt}.
   \caption{Accuracy And Coverage for varying table sizes in GHB and RPT-LA}
   \label{graph:covaccghb}
 \end{figure}
-
-\subsection{Size}
-As seen in Figure~\ref{graph:tablesizes} and~\ref{graph:covaccghb},
-the optimal table size for GHB and RPT-LA is $2^7=128$ entries. The
-GHB implementation uses an index table of size 90 entries. Therefore,
-the approximate memory usage of GHB is (128 entries * 16 bytes/entry)
-+ (90 entries * 16 bytes/entry) = 3488 bytes. The approximate memory
-usage of RPT-LA is 128 entries * 16 bytes/entry = 2048 bytes.
