@@ -108,11 +108,12 @@ Figure~\ref{graph:base}.
 \begin{figure}[h]
 \begin{tikzpicture}
 \begin{axis}[
-    symbolic x coords={SDP,RPT,GHB},
+    symbolic x coords={Seq,SDP,RPT,GHB},
     xtick=data,
     ylabel=SpeedUp
     ]
 \addplot[ybar,fill=blue] coordinates {
+    (Seq,1.01)
     (SDP,1.00)
     (RPT,1.09)
     (GHB,1.09)
