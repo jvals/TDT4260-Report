@@ -24,7 +24,21 @@ Figure~\ref{graph:seq}
     x tick label style = {rotate=45,anchor=east},
     ylabel=SpeedUp,
     legend pos=south west,
-    legend style = {nodes={scale=0.9, transform shape}}]
+    legend style = {nodes={scale=0.8, transform shape}}]
+\addplot coordinates {
+    (twolf,1.03)
+    (bzip2\_source,1.00)
+    (swim,1.01)
+    (bzip2\_graphic,1.02)
+    (bzip2\_program,1.02)
+    (applu,1.11)
+    (apsi,1.02)
+    (art110,0.96)
+    (art470,0.96)
+    (galgel,1.04)
+    (wupwise,1.06)
+    (ammp,0.88)
+};
 \addplot coordinates {
     (twolf,1.00)
     (bzip2\_source,1.01)
@@ -81,10 +95,11 @@ Figure~\ref{graph:seq}
     (wupwise,1.14)
     (ammp,0.74)
 };
-\legend{Di=2 De=2,Di=4 De=4,Di=8 De=8,Di=12 De=12}
+\legend{Di=1 De=1,Di=2 De=2,Di=4 De=4,Di=8 De=8,Di=12 De=12}
 \end{axis}
 \end{tikzpicture}
-    \caption{Testing a sequential prefetcher with prefetch distance and degree set to 2, 4, 8 and 12.}
+    \caption{Testing a sequential prefetcher with prefetch distance
+      and degree set to 1, 2, 4, 8 and 12.}
 \label{graph:seq}
 \end{figure}
 \subsection{Overall Performance}
@@ -94,11 +109,12 @@ Figure~\ref{graph:base}.
 \begin{figure}[h]
 \begin{tikzpicture}
 \begin{axis}[
-    symbolic x coords={SDP,RPT,RPT-LA,GHB},
+    symbolic x coords={Seq,SDP,RPT,RPT-LA,GHB},
     xtick=data,
     ylabel=SpeedUp
     ]
 \addplot[ybar,fill=blue] coordinates {
+    (Seq,1.01)
     (SDP,1.00)
     (RPT,1.06)
     (RPT-LA,1.09)
@@ -135,6 +151,21 @@ shown in Figure~\ref{graph:covaccghb} and in Figure~\ref{graph:covaccrpt}.
     ylabel=SpeedUp,
     legend pos=north west
     ]
+\addplot[fill=green] coordinates {
+    (twolf,1.03)
+    (bzip2\_source,1.00)
+    (swim,1.01)
+    (bzip2\_graphic,1.02)
+    (bzip2\_program,1.02)
+    (applu,1.11)
+    (apsi,1.02)
+    (art110,0.96)
+    (art470,0.96)
+    (galgel,1.04)
+    (wupwise,1.06)
+    (ammp,0.88)
+    (blank,1)
+};
 \addplot[fill=gray] coordinates {
     (twolf,1.00)
     (bzip2\_source,1.00)
@@ -180,7 +211,7 @@ shown in Figure~\ref{graph:covaccghb} and in Figure~\ref{graph:covaccrpt}.
     (ammp,1.66)
     (blank,1)
 };
-\legend{SDP,GHB,RPT-LA}
+\legend{Seq,SDP,GHB,RTP-LA}
 \end{axis}
 \end{tikzpicture}
     \caption{Results for the tests in the SPEC CPU2000 benchmark suite.}
