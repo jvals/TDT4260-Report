@@ -43,3 +43,27 @@ CPU2000 benchmarks was used~\cite{spec2000}. This includes:
 
 These benchmarks all have different memory access patterns, which is
 helpful for discovering weaknesses in the solution.
+
+\subsection{Statistics}
+Some common terminology is needed to understand how the prefetchers
+behave.
+
+Accuracy is the ratio of good prefetches compared to the total number
+of prefetches~\cite{m5userdoc}.
+\begin{equation*}
+  \label{eq:acc}
+  \textnormal{accuracy} = \frac{\textnormal{good prefetches}}{\textnormal{total prefetches}}
+\end{equation*}
+
+Coverage is the ratio of good prefetches compared to the total number
+of cache misses when not using a prefetcher~\cite{m5userdoc}.
+\begin{equation*}
+  \textnormal{coverage}=\frac{\textnormal{good prefetches}}{\textnormal{cache misses without prefeching}}
+\end{equation*}
+
+Speedup~\cite{m5userdoc} is the main measure for performance in this
+paper.
+\begin{equation*}
+  \textnormal{speedup}=\frac{\textnormal{execution time without
+      prefetcher}}{\textnormal{execution time with prefetcher}}
+\end{equation*}
