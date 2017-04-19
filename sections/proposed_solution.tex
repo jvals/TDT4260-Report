@@ -143,7 +143,7 @@ A smaller table, the index table, is used to keep pointers into the
 GHB. The index table is accessed the same way as in other table-based
 prefetchers. In this case, the address of the load instruction acts as
 the key. Each index table entry (shown in Figure~\ref{table:idx_ent})
-has a PC field and a ghb pointer field, with a total size of 16 bytes.
+has a PC field and a GHB pointer field, with a total size of 16 bytes.
 
 \begin{center}
   \begin{tabular}{| c | c |}
@@ -157,8 +157,8 @@ has a PC field and a ghb pointer field, with a total size of 16 bytes.
 
 After accessing the index table, if the PC field does not match the PC
 of the load instruction, the field is updated. However, if the PC
-field does match, the current ghb entry's back pointer is set to the
-address of the ghb pointer. Finally, the ghb pointer is set to the
+field does match, the current GHB entry's back pointer is set to the
+address of the GHB pointer. Finally, the GHB pointer is set to the
 head of the GHB buffer.
 
 A delta table is built by traversing the back pointers and storing the
