@@ -178,3 +178,101 @@ implementation is quite different.
     \caption{Results for the tests in the SPEC CPU2000 benchmark suite.}
     \label{graph:tests}
 \end{figure}
+
+
+\begin{figure}
+  \begin{tikzpicture}
+    \begin{axis}[
+    % width = \columnwidth,
+    xlabel={Table Size [entries]},
+    ylabel={Speedup},
+    xmode=log,
+    log basis x={2},
+    xmin=0, xmax=1024,
+    ymin=0.98, ymax=1.1,
+    xtick={2,4,8,16,32,64,128,256,512, 1024},
+    ymajorgrids=true,
+    grid style=dashed,
+    legend pos = south east
+    ]
+    \addplot[
+    color=blue,
+    mark=square,
+    ]
+    coordinates {
+      (2,1)(4,0.99)(8,1)(16,1)(32,1.06)(64,1.08)(128,1.09)(256,1.09)(512,1.09)(1024,1.09)
+    };
+    \addplot[
+    color=red,
+    mark=triangle,
+    ]
+    coordinates {
+      (2,1)(4,1)(8,1.01)(16,1.02)(32,1.02)(64,1.03)(128,1.09)(256,1.09)(512,1.09)(1024,
+      1.09)
+    };
+    \legend{GHB, RPT-LA}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Speedup for varying table sizes in RPT-LA and GHB}
+  \label{graph:tablesizes}
+\end{figure}
+
+\begin{figure}
+  \begin{tikzpicture}
+    \begin{axis}[
+      xlabel={Table Size [entries]},
+      ylabel=Accuracy/Coverage,
+      xmode=log,
+      log basis x={2},
+      xmin=0, xmax = 1024,
+      xtick={2,4,8,16,32,64,128,256,512, 1024},
+      legend pos = south east,
+      grid style=dashed,
+      ymajorgrids=true,
+      ]
+      \addplot
+      coordinates {
+        (2,0)(4,0.59)(8,0.42)(16,0.48)(32,0.64)(64,0.68)(128,
+        0.66)(256, 0.67)(512, 0.67)(1024,0.67)
+      };
+      \addplot
+      coordinates {
+        (2,0)(4,0.07)(8,0.18)(16,0.25)(32,0.34)(64,0.42)(128,0.42)(256,0.44)(512,0.44)(1024,0.44)
+      };
+      \legend{Accuracy, Coverage}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Accuracy And Coverage for varying table sizes in GHB}
+  \label{graph:covaccghb}
+\end{figure}
+
+\begin{figure}
+  \begin{tikzpicture}
+    \begin{axis}[
+      xlabel={Table Size [entries]},
+      ylabel=Accuracy/Coverage,
+      xmode=log,
+      log basis x={2},
+      xmin=0, xmax = 1024,
+      xtick={2,4,8,16,32,64,128,256,512, 1024},
+      legend pos = south east,
+      grid style=dashed,
+      ymajorgrids=true,
+      ]
+      \addplot
+      coordinates {
+        (2,0.24)(4,0.24)(8,0.6)(16,0.64)(32,0.60)(64,0.63)(128,
+        0.68)(512, 0.67)(1024,0.67)
+      };
+      \addplot
+      coordinates {
+        (2,0.02)(4,0.018)(8,0.13)(16,0.17)(32,0.2)(64,0.26)(128,
+        0.42)(512, 0.44)(1024,0.44)
+      };
+      \legend{Accuracy, Coverage}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Accuracy And Coverage for varying table sizes in RPT-LA}
+  \label{graph:covaccrpt}
+\end{figure}
+
