@@ -7,10 +7,10 @@
 % Use illustrations when possible to convey the message
 
 \subsection{Sequential prefetcher}
-To be conclusive, an implementation of the simplest for of prefetcher
-was done. Whenever a miss occurs the prefetcher fetches the object
-that is next in memory. We tried a couple of different settings for
-prefetch distance and prefetch degree.
+The first implementation is a simple sequential prefetcher.  Whenever
+a cache miss occurs, the prefetcher fetches the object that is next in
+memory.The speedup of this prefetcher varies based on the
+configuration of prefetch distance and prefetch degree.
 
 \subsection{Stride Directed Prediction}
 A slight improvement from a sequential prefetcher is the
