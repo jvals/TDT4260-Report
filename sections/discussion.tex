@@ -15,16 +15,16 @@ every configuration, suggesting it does a lot of memory accessing and
 benefits from prefetching even if the prefetcher method is simple.
 
 \subsection{GHB and RPT}
-The two main prefethcers implemented was suprisingly similar in
-performance over the whole benchmark suite. Generally they tend to
-perform better for floating point tests. Neither scores high in any of
-the data compression tests \texttt{bzip2\_*}, and both gets their
-highest speed up for wupwise which is a simulation of quantum
-hydrodynamics. The only thing that can be said for sure of this result
-is that the tests for floating point calculations probably have the
-same stride more often for subsequent load instructions from the same
-place in the program. Overall the prefetchers only score under 1.00
-which is the baseline time on one test,  \texttt{twolf} = 0.99, which is a
-place and route simulator. Regarding this result, it would be safe to
-say that the prefetchers won't harm the overall performance of the
-computer should one choose to implement one of these schemes. 
+The two main prefetchers that were implemented were surprisingly
+similar in performance over the whole benchmark suite. Generally, they
+performed better for floating point tests. Neither of them scored high
+in any of the data compression tests \texttt{bzip2\_*}, and both got
+their highest speed up when running \texttt{wupwise} which is a simulation of
+quantum hydrodynamics. The only thing that can be said for sure about
+this result is that the tests with floating point calculations probably
+have the same stride more often for subsequent load instructions from
+the same place in the program. Overall, the prefetchers only score
+under 1.00 (which is the baseline) on one test, \texttt{twolf} = 0.99,
+which is a place and route simulator. Regarding this result, it would
+be safe to say that the prefetchers won't harm the overall performance
+of the computer should one choose to implement one of these schemes.
