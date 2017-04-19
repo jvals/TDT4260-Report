@@ -169,6 +169,6 @@ head of the GHB buffer.
 A delta table is built by traversing the back pointers and storing the
 difference (delta) between consecutive cache miss addresses. The delta
 table is traversed to find a delta pair equal to the first pair of
-deltas, this is called delta correlating. If a pattern is found, a
+deltas. This is called delta correlation. If a pattern is found, a
 prefetch is issued for the address equal to the delta plus the current
 miss address, where delta is every delta between the matching pairs.
