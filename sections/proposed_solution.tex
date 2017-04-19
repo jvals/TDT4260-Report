@@ -76,8 +76,9 @@ Figure~\ref{figure:statemachine}. If the entry's state is init,
 transient or steady, a prefetch is considered.
 
 An improvement on this design is to issue multiple prefetches at the
-same time. This is done to prevent data arriving too late, or being
-replaced too early. A variable \texttt{times} is introduced (shown in
+same time. This is refered to as RPT with lookahead, or RPT-LA. This
+is done to prevent data arriving too late, or being replaced too
+early. A variable \texttt{times} is introduced (shown in
 Table~\ref{table:entry_la}) and initially set to 1. Each time there is
 a table hit, \texttt{times} is incremented (up to a fixed lookahead
 limit) if the correct-condition is true. If not, it is decremented
