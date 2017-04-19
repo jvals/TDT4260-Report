@@ -27,15 +27,16 @@ The total size of an SDP entry is 24 bytes, 192 bits, even though the
 fields sum up to 129 bits. This is due to padding added to satisfy
 alignment constraints.
 
-\begin{center}
+\begin{table}[h!]
+  \centering
   \begin{tabular}{ | c | c | c |}
     \hline
     PC & Last Address & Valid Bit \\ \hline
     64 bit & 64 bit & 1 bit \\ \hline
   \end{tabular}
-  \captionof{table}{SDP entry}
+  \caption{SDP entry}
   \label{table:sdpentry}
-\end{center}
+\end{table}
 
 
 \subsection{Reference Prediction Tables}
@@ -53,15 +54,16 @@ access pattern. A prefetch is issued if the block is not in cache.
 The complete format of an entry is shown in
 Table~\ref{table:entry}. The total size of an RPT entry 24 bytes.
 
-\begin{center}
+\begin{table}[h!]
+  \centering
   \begin{tabular}{ | c | c | c | c |}
     \hline
     Tag & Previous Address & Stride & State \\ \hline
     64 bit & 64 bit & 32 bit & 32 bit \\ \hline
   \end{tabular}
-  \captionof{table}{RPT Entry}
+  \caption{RPT Entry}
   \label{table:entry}
-\end{center}
+\end{table}
 
 To avoid bad prefetches, a state machine which indicates the current
 status of the system is used. Initially, an entry has state
@@ -88,15 +90,16 @@ where i $= [1, 2, \ldots, \texttt{times}]$ are issued.
 The total size of the final entry is 32 bytes, again due to padding of
 the bytes.
 
-\begin{center}
+\begin{table}[h!]
+  \centering
   \begin{tabular}{| c | c | c | c | c |}
     \hline
     Tag & Previous Address & Stride & State & Times \\ \hline
     64 bit & 64 bit & 32 bit & 32 bit & 8 bit \\ \hline
   \end{tabular}
-  \captionof{table}{RPT Entry with lookahead}
+  \caption{RPT Entry with lookahead}
   \label{table:entry_la}
-\end{center}
+\end{table}
 
 % State machine
 \begin{center}
@@ -129,15 +132,16 @@ address is requested, it is pushed into the GHB. The format of a GHB
 entry is shown in Figure~\ref{table:ghb_ent}. The size of a GHB entry
 is 16 bytes.
 
-\begin{center}
+\begin{table}[h!]
+  \centering
   \begin{tabular}{| c | c |}
     \hline
     PC & Back Pointer \\ \hline
     64 bit & 16 bit \\ \hline
   \end{tabular}
-  \captionof{table}{GHB entry}
+  \caption{GHB entry}
   \label{table:ghb_ent}
-\end{center}
+\end{table}
 
 A smaller table, the index table, is used to keep pointers into the
 GHB. The index table is accessed the same way as in other table-based
@@ -145,15 +149,16 @@ prefetchers. In this case, the address of the load instruction acts as
 the key. Each index table entry (shown in Figure~\ref{table:idx_ent})
 has a PC field and a GHB pointer field, with a total size of 16 bytes.
 
-\begin{center}
+\begin{table}[h!]
+  \centering
   \begin{tabular}{| c | c |}
     \hline
     PC & GHB Pointer \\ \hline
     64 bit & 16 bit \\ \hline
   \end{tabular}
-  \captionof{table}{Index Table Entry}
+  \caption{Index Table Entry}
   \label{table:idx_ent}
-\end{center}
+\end{table}
 
 After accessing the index table, if the PC field does not match the PC
 of the load instruction, the field is updated. However, if the PC
