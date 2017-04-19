@@ -12,7 +12,7 @@
 The sequential prefetcher was tested with a variety of prefetch
 degrees and prefetch distances. Out of all the tests, ammp performed
 significantly worse on all configurations. As we see later on, ammp
-performes very well with RPT, which indicates that ammp has a strided
+performes very well with RPT-LA, which indicates that ammp has a strided
 access pattern. The results of the different variations are shown in
 Figure~\ref{graph:seq}
 \begin{figure}[h]
@@ -94,13 +94,14 @@ Figure~\ref{graph:base}.
 \begin{figure}[h]
 \begin{tikzpicture}
 \begin{axis}[
-    symbolic x coords={SDP,RPT,GHB},
+    symbolic x coords={SDP,RPT,RPT-LA,GHB},
     xtick=data,
     ylabel=SpeedUp
     ]
 \addplot[ybar,fill=blue] coordinates {
     (SDP,1.00)
-    (RPT,1.09)
+    (RPT,1.06)
+    (RPT-LA,1.09)
     (GHB,1.09)
 };
 \end{axis}
@@ -112,7 +113,7 @@ Figure~\ref{graph:base}.
 \subsection{Test specific analysis}
 We assessed the different prefetchers using the SPEC CPU2000 benchmark suite.
 From Figure~\ref{graph:tests} it is clear that SDP does not success in creating
-any difference while GHB and RPT have both large speed ups and slow downs with
+any difference while GHB and RPT-LA have both large speed ups and slow downs with
 an average on the positive side. They are very similar even if the
 implementation is quite different.
 \begin{figure}[h]
@@ -171,7 +172,7 @@ implementation is quite different.
     (ammp,1.66)
     (blank,1)
 };
-\legend{SDP,GHB,RTP}
+\legend{SDP,GHB,RPT-LA}
 \end{axis}
 \end{tikzpicture}
     \caption{Results for the tests in the SPEC CPU2000 benchmark suite.}
