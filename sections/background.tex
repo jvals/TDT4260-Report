@@ -42,9 +42,9 @@ structures, like tables, are used to store previous addresses, which
 causes some overhead both in computing and storage. However, a good
 implementation can give a high speedup as we show later in this paper.
 
-\subsection{Reference Prediction Tables}
+\subsection{Reference Prediction Table}
 
-Reference Prediction Tables is an extension of a strided prefetcher,
+A Reference Prediction Table is an extension of a strided prefetcher,
 which seeks to avoid bad prefetches. By introducing states,
 prefetching can be delayed until the observed pattern is stable. If
 the same stride is observed twice in a row, a prefetch should be
