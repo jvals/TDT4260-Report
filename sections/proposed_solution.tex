@@ -44,10 +44,13 @@ RPT makes use of a table with entries corresponding to load
 instructions. Every time the program counter hits a load, the current
 address (tag), as well as the memory location loaded from the previous
 address, is stored as an entry in this table. When a tag which already
-resides in the table is found, the program checks what address is about
-to be loaded, and from that, subtract the previous address. The result
-of this subtraction is stored in the corresponding entry as the
-``stride''. The complete format of an entry is shown in
+resides in the table is found, the program checks what address is
+about to be loaded, and from that, subtract the previous address. The
+result of this subtraction is stored in the corresponding entry as the
+If two consecutive strides are equal, this indicates an exploitable
+access pattern. A prefetch is issued if the block is not in cache.
+
+The complete format of an entry is shown in
 Table~\ref{table:entry}. The total size of an RPT entry 24 bytes.
 
 \begin{center}
@@ -59,9 +62,6 @@ Table~\ref{table:entry}. The total size of an RPT entry 24 bytes.
   \captionof{table}{RPT Entry}
   \label{table:entry}
 \end{center}
-
-If two consecutive strides are equal, this indicates a useful access
-pattern. A prefetch is issued if the block is not in cache.
 
 To avoid bad prefetches, a state machine which indicates the current
 status of the system is used. Initially, an entry has state
