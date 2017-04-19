@@ -27,10 +27,11 @@ programs with linear flow, but it's often not enough to fetch a single
 block. Increasing the prefetch degree, the number of blocks to
 prefetch, can improve performance. However, if too many blocks are
 fetched, the cache might evict useful blocks, which would lower the
-performance. Prefetch distance is the amount of blocks between the
-accessed address and the prefetched address. It can be increased to
-improve performance if it happens to meet the timing requirements.
-This is very task specific. 
+performance. Another important parameter is prefetch distance, which
+is the amount of blocks between the accessed address and the
+prefetched address. This can be increased to improve performance if it
+happens to meet the timing requirements. However, this is very task
+specific.
 
 \subsection{Strided Prefetching}
 
