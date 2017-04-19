@@ -24,7 +24,7 @@ Table~\ref{table:sdpentry}. On the next access \textit{Last Address}
 and current address is compared. The difference, ``Stride'', is added
 to the current address and to which a prefetch is issued.
 
-The total size of an SDP entry is 24 byte, 192 bits, even though the
+The total size of an SDP entry is 24 bytes, 192 bits, even though the
 fields sum up to 129 bits. This is due to padding added to satisfy
 alignment constraints.
 
@@ -51,6 +51,8 @@ to be loaded, and from that, subtract the previous address. The result
 of this subtraction is stored in the corresponding entry as the
 ``stride''. The complete format of an entry is shown in
 Table~\ref{table:entry}.
+
+The total size of an RPT entry 24 bytes.
 
 \begin{table}[h]
   \centering
@@ -87,9 +89,12 @@ limit) if the correct-condition is true. If not, it is decremented
 of prefetches with address = previous\_address$ + $stride$\times$i,
 where i $= [1, 2, \ldots, \texttt{times}]$ are issued.
 
+The total size of the final entry is 32 bytes, again due to padding of
+the bytes.
+
 \begin{table}[h]
   \centering
-  \begin{tabular}{ | c | c | c | c | c |}
+  \begin{tabular}{| c | c | c | c | c |}
     \hline
     Tag & Previous Address & Stride & State & Times \\ \hline
     64 bit & 64 bit & 32 bit & 32 bit & 8 bit \\ \hline
