@@ -14,14 +14,14 @@ Figure~\ref{graph:seq}. \texttt{wupwise} gets the highest speedup for
 every configuration, suggesting it does a lot of memory accessing and
 benefits from prefetching even if it is done badly. 
 
-\subsection{GHB and RTP}
+\subsection{GHB and RPT}
 The two main prefethcers implemented was suprisingly similar in
 performance over the whole benchmark suite. Generally they tend to
 perform better for floating point tests. Neither scores high in any of
 the data compression tests \texttt{bzip2\_*}, and both gets their
 highest speed up for wupwise which is a simulation of quantum
 hydrodynamics. The only thing that can be said for sure of this result
-is that the tests for floating point calcualtions probably have the
+is that the tests for floating point calculations probably have the
 same stride more often for subsequent load instructions from the same
 place in the program. Overall the prefetchers only score under 1.00
 which is the baseline time on one test,  \texttt{twolf} = 0.99, which is a

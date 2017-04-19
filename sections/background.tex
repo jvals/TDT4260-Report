@@ -27,15 +27,16 @@ programs with linear flow, but it's often not enough to fetch a single
 block. Increasing the prefetch degree, the number of blocks to
 prefetch, can improve performance. However, if too many blocks are
 fetched, the cache might evict useful blocks, which would lower the
-performance.
+performance. Prefetch distance is the amount of blocks between the
+accessed address and the prefetched address. It can be increased to
+improve performance if it happens to meet the timing requirements.
+This is very task specific. 
 
 \subsection{Strided Prefetching}
 
 A stride directed prefetcher is an example of an instruction-based
-prefetcher. SDP keeps a table of entries indexed by the current load
-address. The first time a load is found, the address is stored in a
-new entry, together with the address of the data. If the load address
-is encountered again, the difference between the current data address
-and the previous data address is calculated. The result, called the
-``stride'', is added to the current data address and the resulting address
-is finally prefetched.
+prefetcher. They use different methods to predict how big the next
+stride is going to be based on earlier memory accesses. They use
+different data structures to store previous addresses, which causes
+some overhead both in computing and storage. But if well implemented
+they can give a high speedup as we show later in this paper.
