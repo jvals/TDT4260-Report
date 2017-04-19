@@ -28,16 +28,15 @@ The total size of an SDP entry is 24 bytes, 192 bits, even though the
 fields sum up to 129 bits. This is due to padding added to satisfy
 alignment constraints.
 
-\begin{table}[h]
-  \centering
+\begin{center}
   \begin{tabular}{ | c | c | c |}
     \hline
     PC & Last Address & Valid Bit \\ \hline
     64 bit & 64 bit & 1 bit \\ \hline
   \end{tabular}
-  \caption{SDP entry}
+  \captionof{table}{SDP entry}
   \label{table:sdpentry}
-\end{table}
+\end{center}
 
 
 \subsection{Reference Prediction Tables}
@@ -50,20 +49,17 @@ resides in the table is found, the program checks what address is about
 to be loaded, and from that, subtract the previous address. The result
 of this subtraction is stored in the corresponding entry as the
 ``stride''. The complete format of an entry is shown in
-Table~\ref{table:entry}.
+Table~\ref{table:entry}. The total size of an RPT entry 24 bytes.
 
-The total size of an RPT entry 24 bytes.
-
-\begin{table}[h]
-  \centering
+\begin{center}
   \begin{tabular}{ | c | c | c | c |}
     \hline
     Tag & Previous Address & Stride & State \\ \hline
     64 bit & 64 bit & 32 bit & 32 bit \\ \hline
   \end{tabular}
-  \caption{RPT Entry}
+  \captionof{table}{RPT Entry}
   \label{table:entry}
-\end{table}
+\end{center}
 
 If two consecutive strides are equal, this indicates a useful access
 pattern. A prefetch is issued if the block is not in cache.
@@ -92,19 +88,17 @@ where i $= [1, 2, \ldots, \texttt{times}]$ are issued.
 The total size of the final entry is 32 bytes, again due to padding of
 the bytes.
 
-\begin{table}[h]
-  \centering
+\begin{center}
   \begin{tabular}{| c | c | c | c | c |}
     \hline
     Tag & Previous Address & Stride & State & Times \\ \hline
     64 bit & 64 bit & 32 bit & 32 bit & 8 bit \\ \hline
   \end{tabular}
-  \caption{RPT Entry with lookahead}
+  \captionof{table}{RPT Entry with lookahead}
   \label{table:entry_la}
-\end{table}
+\end{center}
 
 % State machine
-\begin{figure}[h!]
 \begin{center}
 \begin{tikzpicture}[node distance=3cm,on grid,auto]
    \node[state] (q_0)   {init};
@@ -122,10 +116,9 @@ the bytes.
     (q_3) edge [out=175, in=5] node [swap] {correct} (q_2)
           edge  [loop right] node [text width=2.3cm] {\hspace{0.4cm}incorrect (update stride)} ();
 \end{tikzpicture}
-\caption{State machine as proposed in~\cite{chen_baer_1995}}
+\captionof{figure}{State machine as proposed in~\cite{chen_baer_1995}}
 \label{figure:statemachine}
 \end{center}
-\end{figure}
 
 \subsection{Global History Buffer with PC/DC}
 
@@ -137,7 +130,6 @@ entry is shown in Figure~\ref{table:ghb_ent}. The size of a GHB entry
 is 16 bytes.
 
 \begin{center}
-  \centering
   \begin{tabular}{| c | c |}
     \hline
     PC & Back Pointer \\ \hline
