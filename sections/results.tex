@@ -116,6 +116,14 @@ From Figure~\ref{graph:tests} it is clear that SDP does not success in creating
 any difference while GHB and RPT-LA have both large speed ups and slow downs with
 an average on the positive side. They are very similar even if the
 implementation is quite different.
+
+\subsection{Table sizes}
+GHB and RPT-LA was tested with different table sizes, to find an optimal
+configuration which minimizes size while maintaining speedup. The
+effect of different table sizes on speedup is shown in
+Figure~\ref{graph:tablesizes}. The effect on accuracy and coverage is
+shown in Figure~\ref{graph:covaccghb} and in Figure~\ref{graph:covaccrpt}.
+
 \begin{figure}[h]
 \begin{tikzpicture}
 \begin{axis}[
@@ -276,3 +284,12 @@ implementation is quite different.
   \label{graph:covaccrpt}
 \end{figure}
 
+\subsection{Size}
+
+As seen in
+Figure~\ref{graph:tablesizes}~\ref{graph:covaccghb}~\ref{graph:covaccrpt},
+the optimal table size for GHB and RPT-LA is $2^7=128$ entries.The GHB
+solution uses an index table of size 90. Therefore, the approximate
+memory usage of GHB is (128 entries * 16 bytes/entry) + (90 entries *
+16 bytes/entry) = 3488 bytes.The approximate memory usage of
+RPT-LA is 128 entries * 16 bytes/entry = 2048 bytes.
