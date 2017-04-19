@@ -5,14 +5,14 @@
 
 \subsection{Sequential Prefetcher}
 
-From running the tests for different configurations on a sequential
-prefetcher we got some interesting results. Only one test produced
-really bad results but also did so with every configuration. Overall
-the different configurations performed on average equal to baseline,
-especially for the integer computation tests on the left in
+From running the tests on different configurations on a sequential
+prefetcher we got some interesting results. For example, \texttt{ammp}
+produced the slowest results with every configuration. On average, the
+different configurations produced results close to baseline,
+especially for the integer computation tests shown in
 Figure~\ref{graph:seq}. \texttt{wupwise} gets the highest speedup for
 every configuration, suggesting it does a lot of memory accessing and
-benefits from prefetching even if it is done badly. 
+benefits from prefetching even if the prefetcher method is simple.
 
 \subsection{GHB and RPT}
 The two main prefethcers implemented was suprisingly similar in
